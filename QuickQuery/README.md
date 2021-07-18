@@ -1,4 +1,4 @@
-# quick-JS
+# quick-query
 
 ### String 
 - strInsert - 字符串每隔几个字符添加内容(不支持日语字符)

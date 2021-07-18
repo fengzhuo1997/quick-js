@@ -1,3 +1,24 @@
+function instanceofs() {
+  // instanceof 判断是不是数组类型;
+  const arr = [1, 2, 3, 4, 5];
+  console.log(arr instanceof Array); // true
+}
+
+function convert() {
+  // 数组转字符串
+  var a = [1, 2, 3];
+  console.log(a.valueOf()); // [ 1, 2, 3 ]
+  console.log(a.toLocaleString()) // 1,2,3
+  console.log(a.toString()) // 1,2,3
+}
+
+function indexOf() {
+  // 查找内容， 查找规则是“===”严格等于，indexOf从前往后找， lastIndexOf从后往前找，
+  var a = ["A", "B", "C"];
+  console.log(a.indexOf("B")); // 1
+  console.log(a.lastIndexOf("A")); // 0
+}
+
 function includes() {
   // includes 数组中是否包含某个值 -- 对象数组使用无效;
   const arr = [1, 2, 3, 4, 5];
@@ -31,7 +52,7 @@ function map() {
 }
 
 function shift() {
-  // shift 删除数组第一个元素，并返回第一个元素
+  // shift 删除数组第一个元素，并返回第一个元素，先进先出，队列行为
   const shiftArr = [1, 2, 3];
   shiftArr.shift();
   console.log(shiftArr); // [2, 3]
@@ -45,14 +66,14 @@ function unshift() {
 }
 
 function push() {
-  // push 数组尾添加一个元素
+  // push 数组尾添加一个元素, 先进后出，栈行为
   const pushArr = [1, 2, 3];
   pushArr.push(4);
   console.log(pushArr); // [1, 2, 3, 4]
 }
 
 function pop() {
-  // pop 删除数组末尾对后一个元素，并返回最后一个元素
+  // pop 删除数组末尾对后一个元素，并返回最后一个元素， 先进后出，栈行为
   const popArr = [1, 2, 3];
   popArr.pop();
   console.log(popArr); // [1, 2]
@@ -148,7 +169,7 @@ function splice() {
 }
 
 function reduce() {
-  // reduce 接受4个参数, 分别是：初始值，当前元素值，当前索引，调用reduce的函数
+  // 归并数组 接受4个参数, 分别是：初始值，当前元素值，当前索引，调用reduce的函数
   arr.reduce((prev, current, index, array) => {}, initialValue);
   // 数组求和
   const sumArr = [1, 2, 3, 4, 5];
