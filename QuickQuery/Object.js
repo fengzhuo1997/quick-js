@@ -7,3 +7,9 @@ function typeOf() {
   console.log(typeof a.name == "string");  // true
   console.log(typeof a.address == "string")  // false
 }
+
+// E4X 提供了 XML和JS良好的集成, 便于用JS操作XML
+var xml = new XML(xml);
+var xml = new XMLList();
+
+
