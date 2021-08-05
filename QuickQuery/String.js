@@ -150,3 +150,13 @@ export const jpStrInsert = (str, length) => {
 export const joinSplice = (str, num) => {
   return new Array(num).join(str);
 };
+
+/**
+ * @function the string copy splicing
+ * @param {string} str  characters to insert
+ * @example 123345345 ==> 3,123,345,345
+ * @description 一般用处理钱
+ */
+ export const insertStr = (str) => {
+  return str.replace(/\d(?=(?:\d{3})+\b)/g,'$&,');
+};
