@@ -1,0 +1,29 @@
+## 阻止拖拽图片到浏览器，使当前页面被拖拽的图片替换掉
+### 场景：前端有一个拖拽上传的功能，但如果用户在拖拽时，没有把图片拖拽到上传框，这个页面就会被这个图片替换掉
+
+```
+<body id="body">
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+
+let dropArea = document.getElementById('body')
+dropArea.addEventListener('drop', (e) => {
+  e.stopPropagation()
+  e.preventDefault()
+  e.dataTransfer.dropEffect = "none"	    
+})
+dropArea.addEventListener('dragleave', (e) => {
+  e.stopPropagation()
+  e.preventDefault()	    
+})
+dropArea.addEventListener('dragenter', (e) => {
+  e.stopPropagation()
+  e.preventDefault()
+})
+dropArea.addEventListener('dragover', (e) => {
+  e.stopPropagation()
+  e.preventDefault()
+})
+```
