@@ -182,6 +182,21 @@ function reduce() {
 }
 
 /**
+ * @function 对象数组去重
+ * @param Array
+ * @example 
+ * @description 对象数组去重
+ */
+export const doDedArr = (arr) => {
+  const slimArr = arr.reduce((accumulator, current) => {
+    return accumulator.includes(current)
+      ? accumulator
+      : accumulator.concat(current);
+  }, []);
+  return slimArr;
+};
+
+/**
  * @function Array deduplication
  * @param Array
  * @example ['A', 'B', 'C', 'D', 'C', 'R', 'N', 'B'] => [ 'A', 'B', 'C', 'D', 'R', 'N' ]
@@ -216,11 +231,33 @@ export const doDedpArr = (arr) => {
 /**
  * @function Array deduplication
  * @param Array
- * @example ['A', 'B', 'C', 'D', 'C', 'R', 'N', 'B'] => [ 'A', 'B', 'C', 'D', 'R', 'N' ]
- * @description 简单数组去重
+ * @example [{a: 1, b: 2, c: 3}, {a: 1, b: 2, c: 4}, {a: 1, b: 3, c: 5} ]  ===> [{a: 1, b: 2, c: [3, 4]}, {a: 1, b: 3, c: 5} ] 
+ * @description 对象数组去重,根据多个一样的key去重
  */
 export const doDedplArr = (arr) => {
-  return arr.filter((item, index, arr) => arr.indexOf(item) === index);
+  let tempArr = [];
+      let endData = [];
+      for (let i = 0; i < arr.length; i++) {
+        var string = arr[i].role + arr[i].date;
+        if (tempArr.indexOf(string) === -1) {
+          var fileList = [];
+          fileList.push(arr[i].fileName);
+          endData.push({
+            role: arr[i].role,  
+            date: arr[i].date,
+            fileList: fileList,
+          });
+          tempArr.push(arr[i].role + arr[i].date);  // 根据role和date相同的去重
+        } else {
+          for (let j = 0; j < endData.length; j++) {
+            if (endData[j].role == arr[i].role) {
+              endData[j].fileList.push(arr[i].fileName);
+              break;
+            }
+          }
+        }
+      }
+      return endData;
 };
 
 /**
